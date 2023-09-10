@@ -1,35 +1,34 @@
 import java.util.Scanner;
-public class nextpal{
-    static boolean prime(int n) {
-        for (int i = 2; i <=(n/2)+1; i++) {
-            if (n % i == 0) {
-                return false;
-            }
+public class palin{
+    static int prime(int n) {
+        if (n == 1 || n == 0)
+            return 0;
+        for (int i = 2; i < (n + 1) / 2; i++) {
+            if (n % i == 0)
+                return 0;
         }
-        return true;
+        return 1;
     }
-    static boolean palind(int n){
-        int t=n,rem,rev=0;
-        while(t!=0){
-            rem=t%10;
+    static int palin(int n){
+        int temp=n,rem,rev=0;
+        while(temp!=0){
+            rem=temp%10;
             rev=rev*10+rem;
-            t/=10;
+            temp/=10;
         }
-        if(rev==n)
-        return true;
-        else
-        return false;
+        int ans=(rev==n)?1:0;
+        return ans;
     }
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
         int n=sc.nextInt();
         int i=n+1;
         while(true){
-            if(prime(i)&& palind(i)){
+            if(prime(i)==1 && palin(i)==1){
                 System.out.println(i);
-                break;
+                return;
             }
-            i+=1;
+            i++;
         }
     }
 }
